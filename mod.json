@@ -1,0 +1,26 @@
+{
+	"Name": "Auto Withdraw",
+	"Description": "",
+	"LoadPriority": 2,
+	"RequiredOnClient": false,
+	"Version": "1.0.0",
+	"Scripts": [
+		{
+            "Path": "ui/autowithdraw_settings.nut",
+            "RunOn": "UI",
+            "UICallback": {
+                "Before": "AutoWithdrawSettings_Init"
+            }
+		},
+		{
+            "Path": "ui/autowithdraw.nut",
+            "RunOn": "UI"
+		}
+	],
+	"ConVars": [
+		{
+		  "Name": "autowithdraw_enable",
+		  "DefaultValue": "1"
+		}
+	]
+}
