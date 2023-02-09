@@ -369,7 +369,7 @@ void function DepositAllButton_Activate( var button )
 		return
 	}
 
-	thread DepositAll()
+	TryToDepositAll()
 	EmitUISound( "HUD_MP_BountyHunt_BankBonusPts_Deposit_End_Successful_1P" )
 
 	if ( Time() - file.lastDepositTime < 0.5 )
