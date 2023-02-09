@@ -8,5 +8,3 @@ void function DepositAll()
         WaitFrame()
     }
 }
-
-}
