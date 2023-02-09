@@ -1,6 +1,6 @@
 {
 	"Name": "Donate All Money",
-	"Description": "",
+	"Description": "Donate all money in one click by FlamreRaptor.",
 	"LoadPriority": 2,
 	"RequiredOnClient": false,
 	"Version": "1.0.0",
