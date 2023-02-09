@@ -282,10 +282,12 @@ void function OnOpenBoostStoreMenu()
 		Hud_SetLocked( Hud_GetChild( file.menu, "ContributeButtonPC" ), true )
 		Hud_SetLocked( Hud_GetChild( file.menu, "WithdrawlButton" ), true )
 		Hud_SetLocked( Hud_GetChild( file.menu, "WithdrawlButtonPC" ), true )
+		Hud_SetLocked( Hud_GetChild( file.menu, "ContributeAllButton" ), true )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "ContributeButton" ), false )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "ContributeButtonPC" ), false )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "WithdrawlButton" ), false )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "WithdrawlButtonPC" ), false )
+		Hud_SetEnabled( Hud_GetChild( file.menu, "ContributeAllButton" ), false )
 	}
 	else
 	{
@@ -294,10 +296,12 @@ void function OnOpenBoostStoreMenu()
 		Hud_SetLocked( Hud_GetChild( file.menu, "ContributeButtonPC" ), false )
 		Hud_SetLocked( Hud_GetChild( file.menu, "WithdrawlButton" ), false )
 		Hud_SetLocked( Hud_GetChild( file.menu, "WithdrawlButtonPC" ), false )
+		Hud_SetLocked( Hud_GetChild( file.menu, "ContributeAllButton" ), false )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "ContributeButton" ), true )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "ContributeButtonPC" ), true )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "WithdrawlButton" ), true )
 		Hud_SetEnabled( Hud_GetChild( file.menu, "WithdrawlButtonPC" ), true )
+		Hud_SetEnabled( Hud_GetChild( file.menu, "ContributeAllButton" ), true )
 	}
 
 	file.menuOpenTime = Time()

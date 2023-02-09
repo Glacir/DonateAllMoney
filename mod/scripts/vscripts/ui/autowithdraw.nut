@@ -10,7 +10,9 @@ void function DepositAll()
     if (file.DEPOSITING)
         return
     file.DEPOSITING = true
-    while(GetPlayerMoney(GetUIPlayer()) > 0)
+    int money = GetPlayerMoney(GetUIPlayer())
+    int times = int(ceil(money / 100.0))
+    for (int i = 0;i < times;++i)
     {
         ClientCommand( "TeamReserveDeposit" )
         wait 0.1
