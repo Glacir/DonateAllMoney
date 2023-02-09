@@ -28,6 +28,8 @@ struct
 	var withdrawlButtonRuiPC
 	var depositButtonRuiPC
 
+	var depositAllButtonRui
+
 	var teamReserveLabelRui
 	var activationCostTextRui
 
@@ -97,6 +99,7 @@ void function InitBoostStoreMenu()
 
 	file.depositButtonRui = Hud_GetRui( Hud_GetChild( file.menu, "ContributeButton" ) )
 	file.depositButtonRuiPC = Hud_GetRui( Hud_GetChild( file.menu, "ContributeButtonPC" ) )
+	file.depositAllButtonRui = Hud_GetRui( Hud_GetChild( file.menu, "ContributeAllButton" ) )
 
 	file.withdrawlButtonRui = Hud_GetRui( Hud_GetChild( file.menu, "WithdrawlButton" ) )
 	file.withdrawlButtonRuiPC = Hud_GetRui( Hud_GetChild( file.menu, "WithdrawlButtonPC" ) )
@@ -108,9 +111,11 @@ void function InitBoostStoreMenu()
 
 	RuiSetBool( file.depositButtonRuiPC, "isPC", true )
 	RuiSetBool( file.withdrawlButtonRuiPC, "isPC", true )
+	RuiSetBool( file.depositAllButtonRui, "isPC", true )
 
 	Hud_AddEventHandler( Hud_GetChild( file.menu, "ContributeButtonPC" ), UIE_CLICK, DepositButton_Activate )
 	Hud_AddEventHandler( Hud_GetChild( file.menu, "WithdrawlButtonPC" ), UIE_CLICK, WithdrawButton_Activate )
+	Hud_AddEventHandler( Hud_GetChild( file.menu, "ContributeAllButton" ), UIE_CLICK, DepositAllButton_Activate )
 
 	UpdateDepositButton( 100 )
 	UpdateWithdrawlButton( 100 )
@@ -127,6 +132,7 @@ void function UpdateDepositButton( int creditAmount )
 {
 	RuiSetString( file.depositButtonRui, "buttonText", Localize( "#X_BUTTON_DEPOSIT", creditAmount ) )
 	RuiSetString( file.depositButtonRuiPC, "buttonText", Localize( "#PC_BUTTON_DEPOSIT", creditAmount ) )
+	RuiSetString( file.depositAllButtonRui, "buttonText", "Donate all money" )
 }
 
 bool function BurnCardButtonInit( var button, int elemNum )
@@ -331,6 +337,39 @@ void function DepositButton_Activate( var button )
 	}
 
 	ClientCommand( "TeamReserveDeposit" )
+	EmitUISound( "HUD_MP_BountyHunt_BankBonusPts_Deposit_End_Successful_1P" )
+
+	if ( Time() - file.lastDepositTime < 0.5 )
+		file.depositIndex++
+	else
+		file.depositIndex = 0
+
+	if ( file.depositIndex < file.moneyTransferRuis.len() )
+	{
+		file.lastDepositTime = Time()
+		RuiSetGameTime( file.moneyTransferRuis[file.depositIndex], "depositUpdateTime", Time() )
+	}
+}
+
+void function DepositAllButton_Activate( var button )
+{
+	if ( GetCurrentPlaylistVarInt( "boost_store_team_reserve", 0 ) <= 0 )
+		return
+
+	if ( GetActiveMenu() != file.menu )
+		return
+
+	// defensive, since holding X b0rks us
+	if ( Time() - file.menuOpenTime < 0.5 )
+		return
+
+	if ( GetPlayerMoney( GetUIPlayer() ) <= 0 )
+	{
+		EmitUISound( "HUD_MP_BountyHunt_BankBonusPts_Deposit_End_Unsuccessful_1P" )
+		return
+	}
+
+	thread DepositAll()
 	EmitUISound( "HUD_MP_BountyHunt_BankBonusPts_Deposit_End_Successful_1P" )
 
 	if ( Time() - file.lastDepositTime < 0.5 )
