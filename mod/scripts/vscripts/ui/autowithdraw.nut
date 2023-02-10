@@ -12,10 +12,11 @@ void function DepositAll()
     file.DEPOSITING = true
     int money = GetPlayerMoney(GetUIPlayer())
     int times = int(ceil(money / 100.0))
-    for (int i = 0;i < times;++i)
+    for (int i = 0; i < times; ++i)
     {
         ClientCommand( "TeamReserveDeposit" )
-        wait 0.1
+        EmitUISound( "HUD_MP_BountyHunt_BankBonusPts_Deposit_End_Successful_1P" )
+        wait 0.07
     }
     file.DEPOSITING = false
 }
