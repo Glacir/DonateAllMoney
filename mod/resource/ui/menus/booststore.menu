@@ -271,11 +271,11 @@ resource/ui/menus/booststore.menu
 	        ControlName				RuiButton
 	        InheritProperties		StoreMenuButtonSmall
 	        rui						"ui/reserve_button_small.rpak"
-	        ypos                    8
+	        xpos                    30
 	        scriptID				0
-	        pin_to_sibling			GridAnchor
-	        pin_corner_to_sibling	WithdrawlButton
-	        pin_to_sibling_corner	BOTTOM_RIGHT
+	        pin_to_sibling			ContributeButton
+	        pin_corner_to_sibling	TOP_LEFT
+	        pin_to_sibling_corner	TOP_RIGHT
 	        visible					1
 			activeInputExclusivePaint	keyboard
 	    }
