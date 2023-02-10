@@ -252,7 +252,7 @@ void function BurnCardButton_Activate( var button, int elemNum )
 
 	ClientCommand( "PurchaseBoost " + ref )
 
-	CloseActiveMenu()
+	// CloseActiveMenu()
 }
 
 
