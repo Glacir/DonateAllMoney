@@ -19,6 +19,7 @@ void function DepositAll()
         wait 0.07
     }
     file.DEPOSITING = false
+    CloseActiveMenu()
 }
 
 void function TryToDepositAll()
