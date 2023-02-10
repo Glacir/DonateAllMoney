@@ -132,7 +132,7 @@ void function UpdateDepositButton( int creditAmount )
 {
 	RuiSetString( file.depositButtonRui, "buttonText", Localize( "#X_BUTTON_DEPOSIT", creditAmount ) )
 	RuiSetString( file.depositButtonRuiPC, "buttonText", Localize( "#PC_BUTTON_DEPOSIT", creditAmount ) )
-	RuiSetString( file.depositAllButtonRui, "buttonText", "Donate all money" )
+	RuiSetString( file.depositAllButtonRui, "buttonText", Localize("#DONATE_ALL_MONEY") )
 }
 
 bool function BurnCardButtonInit( var button, int elemNum )

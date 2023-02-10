@@ -9,5 +9,8 @@
             "Path": "ui/autowithdraw.nut",
             "RunOn": "UI"
 		}
-	]
+	],
+	"Localisation": [
+        "resource/aw_%language%.txt"
+    ]
 }
