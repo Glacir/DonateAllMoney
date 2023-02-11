@@ -252,7 +252,9 @@ void function BurnCardButton_Activate( var button, int elemNum )
 
 	ClientCommand( "PurchaseBoost " + ref )
 
-	// CloseActiveMenu()
+	int money = GetPlayerMoney(GetUIPlayer()) - cost
+	if (money < 650)
+		CloseActiveMenu()
 }
 
 
