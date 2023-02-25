@@ -5,7 +5,7 @@ struct
     bool DEPOSITING = false
 }file
 
-void function DepositAll()
+void function DepositAll(void functionref() callback = null)
 {
     if (file.DEPOSITING)
         return
@@ -16,13 +16,13 @@ void function DepositAll()
     {
         ClientCommand( "TeamReserveDeposit" )
         EmitUISound( "HUD_MP_BountyHunt_BankBonusPts_Deposit_End_Successful_1P" )
-        wait 0.11
+        wait 0.1
     }
     file.DEPOSITING = false
     CloseActiveMenu()
 }
 
-void function TryToDepositAll()
+void function TryToDepositAll(void functionref() callback = null)
 {
     if (!file.DEPOSITING)
         thread DepositAll()

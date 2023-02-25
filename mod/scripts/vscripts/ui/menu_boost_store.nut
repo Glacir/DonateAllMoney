@@ -375,7 +375,7 @@ void function DepositAllButton_Activate( var button )
 		return
 	}
 
-	TryToDepositAll()
+	TryToDepositAll(CloseMenu_Callback)
 
 	if ( Time() - file.lastDepositTime < 0.5 )
 		file.depositIndex++
@@ -603,4 +603,10 @@ void function OpenTeamReserveIntroDialog()
 	AddDialogFooter( dialogData, "#B_BUTTON_DISMISS_RUI" )
 
 	OpenDialog( dialogData )
+}
+
+void function CloseMenu_Callback()
+{
+	if ( IsBoostStoreMenuOpen() )
+		CloseActiveMenu()
 }
