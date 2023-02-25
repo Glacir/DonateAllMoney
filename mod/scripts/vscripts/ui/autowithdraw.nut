@@ -16,7 +16,7 @@ void function DepositAll()
     {
         ClientCommand( "TeamReserveDeposit" )
         EmitUISound( "HUD_MP_BountyHunt_BankBonusPts_Deposit_End_Successful_1P" )
-        wait 0.07
+        wait 0.11
     }
     file.DEPOSITING = false
     CloseActiveMenu()
