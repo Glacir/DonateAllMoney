@@ -3,7 +3,7 @@
 	"Description": "Donate all money in one click by FlameRaptor.",
 	"LoadPriority": 2,
 	"RequiredOnClient": false,
-	"Version": "1.2.2",
+	"Version": "1.2.3",
 	"Scripts": [
 		{
             "Path": "ui/autowithdraw.nut",

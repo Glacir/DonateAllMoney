@@ -610,3 +610,8 @@ void function CloseMenu_Callback()
 	if ( IsBoostStoreMenuOpen() )
 		CloseActiveMenu()
 }
+
+bool function IsBoostStoreMenuOpen()
+{
+	return GetActiveMenu() == file.menu && file.menu != null
+}

@@ -19,11 +19,12 @@ void function DepositAll(void functionref() callback = null)
         wait 0.1
     }
     file.DEPOSITING = false
-    CloseActiveMenu()
+    if (callback != null)
+        callback()
 }
 
 void function TryToDepositAll(void functionref() callback = null)
 {
     if (!file.DEPOSITING)
-        thread DepositAll()
+        thread DepositAll(callback)
 }
